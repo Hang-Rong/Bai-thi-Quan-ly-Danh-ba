@@ -24,12 +24,11 @@ public class ReadAndWrite {
         }
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line = br.readLine(); // Read and ignore the header line
+            String line = br.readLine();
 
             while ((line = br.readLine()) != null) {
-                String[] data = line.split(",", -1); // Use -1 to ensure all fields are captured even if empty
+                String[] data = line.split(",", -1); // Dùng -1 để chắc chắc tất cả trường dữ liệu được ghi nhận dù trống
 
-                // Check if the line has the correct number of fields
                 if (data.length == 7) {
                     try {
                         LocalDate birthdate = LocalDate.parse(data[5], DATE_FORMATTER);
