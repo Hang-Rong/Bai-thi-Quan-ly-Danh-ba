@@ -110,7 +110,7 @@ public class UserMenu {
     }
 
     private void updateContactDetails(Contact contact) {
-        System.out.println("--- Contact details update \n leave blank to keep current---");
+        System.out.println("--- Contact details update--- \n (leave blank to keep current)\n");
         System.out.print("Enter new name: ");
         String input = scanner.nextLine();
         if (!input.isBlank()) {
