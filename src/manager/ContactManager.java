@@ -19,8 +19,56 @@ public class ContactManager {
     public void viewContacts() {
         if (contacts.isEmpty()) {
             System.out.println("No contacts available.");
-        } else {
-            contacts.forEach(System.out::println);
+            return;
+        }
+
+        final int ITEMS_PER_PAGE = 5;
+        int currentPage = 0;
+        int totalPages = (int) Math.ceil((double) contacts.size() / ITEMS_PER_PAGE);
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            int start = currentPage * ITEMS_PER_PAGE;
+            int end = Math.min(start + ITEMS_PER_PAGE, contacts.size());
+
+            for (int i = start; i < end; i++) {
+                System.out.println(contacts.get(i));
+            }
+
+            System.out.println("\nOptions:");
+            if (currentPage > 0) {
+                System.out.println("p - Previous page");
+            }
+            if (currentPage < totalPages - 1) {
+                System.out.println("n - Next page");
+            }
+            System.out.println("q - Quit");
+
+            System.out.print("Enter your choice: ");
+            String choice = scanner.nextLine().trim().toLowerCase();
+
+            switch (choice) {
+                case "p":
+                    if (currentPage > 0) {
+                        currentPage--;
+                    } else {
+                        System.out.println("You are already on the first page.");
+                    }
+                    break;
+                case "n":
+                    if (currentPage < totalPages - 1) {
+                        currentPage++;
+                    } else {
+                        System.out.println("You are already on the last page.");
+                    }
+                    break;
+                case "q":
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
 
