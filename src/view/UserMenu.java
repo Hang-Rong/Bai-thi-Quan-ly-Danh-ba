@@ -145,7 +145,7 @@ public class UserMenu {
             }
         }
 
-        System.out.print("Enter new gender (or leave blank to keep current): ");
+        System.out.print("Enter new gender: ");
         input = scanner.nextLine();
         if (!input.isBlank()) {
             contact.setGender(input);

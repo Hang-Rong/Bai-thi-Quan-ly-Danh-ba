@@ -54,7 +54,7 @@ public class ReadAndWrite {
 
     public void writeToFile(List<Contact> contacts) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            // Write the header
+            // Ghi đầu đề trường dữ liệu
             bw.write(String.join(",", HEADERS));
             bw.newLine();
 
